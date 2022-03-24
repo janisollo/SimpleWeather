@@ -5,7 +5,7 @@ const app = express();
 
 app.get("/", function (req, res) {
 
-    const url = "https://api.openweathermap.org/data/2.5/weather?q=Bangkok&appid=2c5dcfbf7ebd20e55dc2279525d09593&units=metric"
+    const url = "https://api.openweathermap.org/data/2.5/weather?q=Pattaya&appid=2c5dcfbf7ebd20e55dc2279525d09593&units=metric"
 
     https.get(url, function (response) {
         console.log(response.statusCode);
@@ -18,7 +18,7 @@ app.get("/", function (req, res) {
             const imgURL = "http://openweathermap.org/img/wn/" + icon + "@2x.png"
 
 
-            res.write("<h1>The temperature in Bangkok is " + temp + " Degrees celcius. While the sky above us has " + weartherDescription + ".</h1>")
+            res.write("<h1>The temperature in Pattaya is " + temp + " Degrees celcius. While the sky above us has " + weartherDescription + ".</h1>")
             res.write("<img src=" + imgURL + " > ")
 
             res.send()
