@@ -14,7 +14,12 @@ app.get("/", function (req, res) {
             const weatherData = JSON.parse(data)
             const temp = weatherData.main.temp
             const weartherDescription = weatherData.weather[0].description
+            const icon = weatherData.weather[0].icon
+            const imgURL = "http://openweathermap.org/img/wn/" + icon + "@2x.png"
+
+
             res.write("<h1>The temperature in Bangkok is " + temp + " Degrees celcius. While the sky above us has " + weartherDescription + ".</h1>")
+            res.write("<img src=" + imgURL + " > ")
 
             res.send()
         })
