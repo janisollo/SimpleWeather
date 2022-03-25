@@ -4,28 +4,32 @@ const app = express();
 
 
 app.get("/", function (req, res) {
-
-    const url = "https://api.openweathermap.org/data/2.5/weather?q=Pattaya&appid=2c5dcfbf7ebd20e55dc2279525d09593&units=metric"
-
-    https.get(url, function (response) {
-        console.log(response.statusCode);
-
-        response.on("data", function (data) {
-            const weatherData = JSON.parse(data)
-            const temp = weatherData.main.temp
-            const weartherDescription = weatherData.weather[0].description
-            const icon = weatherData.weather[0].icon
-            const imgURL = "http://openweathermap.org/img/wn/" + icon + "@2x.png"
-
-
-            res.write("<h1>The temperature in Pattaya is " + temp + " Degrees celcius. While the sky above us has " + weartherDescription + ".</h1>")
-            res.write("<img src=" + imgURL + " > ")
-
-            res.send()
-        })
-    })
-
+    res.sendFile(__dirname + "/index.html")
 })
+
+// const query = "London"
+// const apiKey = "2c5dcfbf7ebd20e55dc2279525d09593"
+// const unit = "metric"
+
+// const url = "https://api.openweathermap.org/data/2.5/weather?q=" + query + "&appid=" + apiKey + "&units=" + unit;
+
+// https.get(url, function (response) {
+//     console.log(response.statusCode);
+
+//     response.on("data", function (data) {
+//         const weatherData = JSON.parse(data)
+//         const temp = weatherData.main.temp
+//         const weartherDescription = weatherData.weather[0].description
+//         const icon = weatherData.weather[0].icon
+//         const imgURL = "http://openweathermap.org/img/wn/" + icon + "@2x.png"
+
+
+//         res.write("<h1>The temperature in Pattaya is " + temp + " Degrees celcius. While the sky above us has " + weartherDescription + ".</h1>")
+//         res.write("<img src=" + imgURL + " > ")
+
+//         res.send()
+//     })
+// })
 
 
 app.listen(3000, function () {
